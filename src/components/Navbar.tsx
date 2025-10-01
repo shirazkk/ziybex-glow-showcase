@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Share2, Palette, Search, Globe, MousePointerClick, Film } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,10 +26,18 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
+  ];
+
+  const services = [
+    { icon: Share2, title: "Social Media Marketing", href: "#services" },
+    { icon: Palette, title: "Branding & Creative Design", href: "#services" },
+    { icon: Search, title: "SEO Optimization", href: "#services" },
+    { icon: Globe, title: "Website Design & Development", href: "#services" },
+    { icon: MousePointerClick, title: "PPC & Google Ads", href: "#services" },
+    { icon: Film, title: "2D & 3D Animation", href: "#services" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -79,6 +94,41 @@ const Navbar = () => {
                 {link.name}
               </motion.a>
             ))}
+            
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent text-foreground/80 hover:text-accent hover:bg-transparent font-medium">
+                    Our Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid grid-cols-2 gap-4 p-6 w-[600px] bg-background/95 backdrop-blur-md">
+                      {services.map((service) => (
+                        <a
+                          key={service.title}
+                          href={service.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection(service.href);
+                          }}
+                          className="group flex items-start gap-4 p-4 rounded-lg hover:bg-accent/10 transition-smooth border border-transparent hover:border-accent/20"
+                        >
+                          <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-smooth flex-shrink-0">
+                            <service.icon className="w-6 h-6 text-accent" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-foreground group-hover:text-accent transition-smooth mb-1">
+                              {service.title}
+                            </h4>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
             <Button
               size="sm"
               className="bg-accent hover:bg-accent/90 text-accent-foreground glow-accent"
@@ -123,8 +173,27 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
+              
+              <div className="border-t border-border pt-4 mt-2">
+                <p className="text-sm font-semibold text-foreground mb-3">Our Services</p>
+                {services.map((service) => (
+                  <a
+                    key={service.title}
+                    href={service.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(service.href);
+                    }}
+                    className="flex items-center gap-3 py-2 text-foreground/80 hover:text-accent transition-smooth"
+                  >
+                    <service.icon className="w-5 h-5 text-accent" />
+                    <span className="text-sm">{service.title}</span>
+                  </a>
+                ))}
+              </div>
+
               <Button
-                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full mt-4"
                 onClick={() => scrollToSection("#contact")}
               >
                 Get Started
