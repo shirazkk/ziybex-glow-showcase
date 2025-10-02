@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
 import {
   Menu,
   X,
@@ -12,10 +11,6 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-=======
-import { Menu, X, Share2, Palette, Search, Globe, MousePointerClick, Film } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
->>>>>>> a24d641914d44b93dfe863f696797f0830c53f59
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -24,7 +19,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-<<<<<<< HEAD
 import {
   Sheet,
   SheetTrigger,
@@ -33,8 +27,6 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-=======
->>>>>>> a24d641914d44b93dfe863f696797f0830c53f59
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,17 +78,26 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto  px-0 md:px-2">
+      <div className="container mx-auto px-2 md:px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.img
-            src="/ziybex_logo.png"
-            alt="Ziybex logo"
-            className="object-cover w-56 cursor-pointer"
+          {/* Logo - fully left aligned */}
+          <motion.a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#home");
+            }}
+            className=""
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          ></motion.img>
+          >
+            <img
+              src="/ziybex_logo.png"
+              alt="Ziybex logo"
+              className="object-cover w-56 cursor-pointer"
+            />
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -119,7 +120,7 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className=" text-base text-foreground/80 hover:text-accent bg-transparent font-medium">
+                  <NavigationMenuTrigger className="text-base text-foreground/80 hover:text-accent bg-transparent font-medium">
                     Our Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -166,43 +167,6 @@ const Navbar = () => {
                 {link.name}
               </motion.a>
             ))}
-<<<<<<< HEAD
-=======
-            
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-foreground/80 hover:text-accent hover:bg-transparent font-medium">
-                    Our Services
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid grid-cols-2 gap-4 p-6 w-[600px] bg-background/95 backdrop-blur-md">
-                      {services.map((service) => (
-                        <a
-                          key={service.title}
-                          href={service.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(service.href);
-                          }}
-                          className="group flex items-start gap-4 p-4 rounded-lg hover:bg-accent/10 transition-smooth border border-transparent hover:border-accent/20"
-                        >
-                          <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-smooth flex-shrink-0">
-                            <service.icon className="w-6 h-6 text-accent" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-foreground group-hover:text-accent transition-smooth mb-1">
-                              {service.title}
-                            </h4>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
->>>>>>> a24d641914d44b93dfe863f696797f0830c53f59
 
             <Button
               size="sm"
@@ -219,6 +183,7 @@ const Navbar = () => {
               <button
                 className="md:hidden p-2 text-foreground"
                 aria-label="Toggle menu"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -237,7 +202,7 @@ const Navbar = () => {
                 >
                   {navLinks[0].name}
                 </a>
-<<<<<<< HEAD
+
                 {/* Our Services dropdown (accordion style) */}
                 <button
                   type="button"
@@ -307,38 +272,6 @@ const Navbar = () => {
           </Sheet>
         </div>
       </div>
-=======
-              ))}
-              
-              <div className="border-t border-border pt-4 mt-2">
-                <p className="text-sm font-semibold text-foreground mb-3">Our Services</p>
-                {services.map((service) => (
-                  <a
-                    key={service.title}
-                    href={service.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(service.href);
-                    }}
-                    className="flex items-center gap-3 py-2 text-foreground/80 hover:text-accent transition-smooth"
-                  >
-                    <service.icon className="w-5 h-5 text-accent" />
-                    <span className="text-sm">{service.title}</span>
-                  </a>
-                ))}
-              </div>
-
-              <Button
-                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full mt-4"
-                onClick={() => scrollToSection("#contact")}
-              >
-                Get Started
-              </Button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
->>>>>>> a24d641914d44b93dfe863f696797f0830c53f59
     </motion.nav>
   );
 };
