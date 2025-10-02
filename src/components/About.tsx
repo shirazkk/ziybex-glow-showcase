@@ -12,7 +12,7 @@ const About = () => {
   const stats = [
     { number: 500, suffix: "+", label: "Projects Completed" },
     { number: 300, suffix: "+", label: "Happy Clients" },
-    { number: 8, suffix: "+", label: "Years in Business" },
+    { number: 5, suffix: "+", label: "Years in Business" },
     { number: 25, suffix: "+", label: "Team Members" },
   ];
 
@@ -44,7 +44,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="absolute -bottom-8 -right-8 bg-card p-6 rounded-xl shadow-xl border border-border"
             >
-              <div className="text-4xl font-bold text-accent mb-2">8+</div>
+              <div className="text-4xl font-bold text-accent mb-2">5+</div>
               <div className="text-sm text-muted-foreground">Years of Excellence</div>
             </motion.div>
           </motion.div>

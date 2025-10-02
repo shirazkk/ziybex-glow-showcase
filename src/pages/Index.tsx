@@ -7,12 +7,16 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import VideoSection from "@/components/video";
+// import CompanyLogos from "@/components/companylogo";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen scroll-smooth overflow-x-hidden">
       <Navbar />
       <Hero />
+      <VideoSection />
+      {/* <CompanyLogos/> */}
       <Services />
       <About />
       <WhyChooseUs />
